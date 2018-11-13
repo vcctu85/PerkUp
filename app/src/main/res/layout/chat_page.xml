@@ -4,8 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/chatPage">
-
+    android:background="@drawable/chat_page">
+    <Button
+        android:id="@+id/back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/back"/>
     <ListView
         android:id="@+id/msg_list_view"
         android:layout_height="0dp"

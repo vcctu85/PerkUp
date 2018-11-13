@@ -1,5 +1,6 @@
 package com.example.macbook.perkupapp;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -16,13 +17,11 @@ import java.util.List;
 public class ChatPage extends AppCompatActivity {
 
 
-
-
     private ListView msgListView;
     private EditText inputText;
     private Button send;
     private MsgAdapter adapter;
-
+    Button back;
     private List<Msg> msgList = new ArrayList<Msg>();
 
 
@@ -34,6 +33,8 @@ public class ChatPage extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
+        back = findViewById(R.id.back);
+        back.setOnClickListener(new backButton());
 
         initMsgs();
         adapter = new MsgAdapter(ChatPage.this, R.layout.message_item, msgList);
@@ -57,6 +58,8 @@ public class ChatPage extends AppCompatActivity {
     }
 
     private void initMsgs() {
+
+        // Just for example
         Msg msg1 = new Msg("Hello, how are you?", Msg.TYPE_RECEIVED);
         msgList.add(msg1);
         Msg msg2 = new Msg("Great!", Msg.TYPE_SEND);
@@ -65,5 +68,13 @@ public class ChatPage extends AppCompatActivity {
         msgList.add(msg3);
     }
 
+    private class backButton implements View.OnClickListener {
+        @Override
+        public void onClick(View arg0) {
+            Intent intent = new Intent();
+            intent.setClass(ChatPage.this, HomePage.class);
+            startActivity(intent);
+        }
+    }
 
 }

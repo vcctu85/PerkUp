@@ -2,6 +2,7 @@ package com.example.macbook.perkupapp;
 
 
 public class Msg {
+
     public static final int TYPE_RECEIVED = 0;
     public static final int TYPE_SEND = 1;
 

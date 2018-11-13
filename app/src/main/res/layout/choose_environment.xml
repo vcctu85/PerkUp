@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:twittersdk="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/environmentPage"
+    android:background="@drawable/environment_page"
     >
 
     <Button
+        android:id="@+id/back"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:background="@drawable/back"/>

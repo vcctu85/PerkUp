@@ -16,14 +16,20 @@ public class HomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+        init();
+    }
+
+    private void init() {
 
 
         TextView textview = (TextView) findViewById(R.id.appLogo);
         // adjust this line to get the TextView you want to change
 
-        Typeface typeface = Typeface.createFromAsset(getAssets(),"AllertaStencil-Regular.ttf"); // create a typeface from the raw ttf
+        Typeface typeface = Typeface.createFromAsset(getAssets(),"AllertaStencil-Regular.ttf");
+        // create a typeface from the raw ttf
         textview.setTypeface(typeface);
 
+        //find three main buttons on home page.
         enterAR = findViewById(R.id.enterAR);
         chatWithPenny = findViewById(R.id.chatWithPenny);
         viewProgress = findViewById(R.id.viewProgress);
