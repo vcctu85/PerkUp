@@ -59,9 +59,9 @@ public class ChatPage extends AppCompatActivity {
     private void initMsgs() {
         Msg msg1 = new Msg("Hello, how are you?", Msg.TYPE_RECEIVED);
         msgList.add(msg1);
-        Msg msg2 = new Msg("I feel bad.?", Msg.TYPE_SEND);
+        Msg msg2 = new Msg("Great!", Msg.TYPE_SEND);
         msgList.add(msg2);
-        Msg msg3 = new Msg("Let's get start.", Msg.TYPE_RECEIVED);
+        Msg msg3 = new Msg("Keep it. Bye~", Msg.TYPE_RECEIVED);
         msgList.add(msg3);
     }
 
