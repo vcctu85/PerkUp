@@ -1,7 +1,12 @@
 package com.example.macbook.perkupapp;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -9,10 +14,8 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.unity3d.player.UnityPlayerActivity;
-
-public class GamePage extends AppCompatActivity {
+//import com.example.macbook.perkupapp.UnityPlayerActivity;
+public class GamePage extends Activity {
     private GameAdapter gameAdapter;
 
     @Override
@@ -30,14 +33,15 @@ public class GamePage extends AppCompatActivity {
         games.add(two);
         games.add(three);
         gameAdapter = new GameAdapter(this, games);
-        Button button = findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(view.getContext(),UnityPlayerActivity.class);
-                startActivity(intent);
-            }
-        });
+//        Button button = findViewById(R.id.button);
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                Intent myIntent = new Intent(view.getContext(), com.example.macbook.perkupapp.UnityPlayerActivity.class);
+//                startActivity(myIntent);
+//            }
+//        });
         newsListView.setAdapter(gameAdapter);
     }
 }

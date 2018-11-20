@@ -5,10 +5,6 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
 
-    <!-- Indicates that app requires ARCore ("AR Required"). Ensures app is only
-         visible in the Google Play Store on devices that support ARCore.
-    -->
-    <uses-feature android:name="android.hardware.camera.ar" />
     <application
         android:allowBackup="true"
         tools:replace="android:icon,android:theme"
@@ -27,6 +23,7 @@
         <activity android:name=".ChatPage"/>
         <activity android:name=".EnvironmentChoose"/>
         <activity android:name=".GamePage"/>
+
         <meta-data android:name="com.google.ar.core" android:value="required" />
     </application>
 
