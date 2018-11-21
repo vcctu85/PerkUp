@@ -13,10 +13,13 @@
         android:layout_marginBottom="4dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="8dp"
-        android:background="@drawable/user_bg_bubble"
         android:gravity="end|center_vertical"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/environment_button_shape">
         <TextView
             android:id="@+id/chatMsg"
             android:layout_width="wrap_content"
@@ -33,6 +36,11 @@
             android:layout_marginTop="8dp">
 
         </FrameLayout>
-
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/head_right"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/head2"/>
     </LinearLayout>
 </FrameLayout>
