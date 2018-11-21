@@ -4,7 +4,7 @@
     package="com.example.macbook.perkupapp">
 
     <uses-permission android:name="android.permission.CAMERA" />
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         tools:replace="android:icon,android:theme"
@@ -20,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ChatPage"/>
+        <activity android:name=".ChatActivity"/>
         <activity android:name=".EnvironmentChoose"/>
         <activity android:name=".GamePage"/>
 

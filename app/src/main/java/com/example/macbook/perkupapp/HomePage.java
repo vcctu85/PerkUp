@@ -105,7 +105,7 @@ public class HomePage extends AppCompatActivity {
         @Override
         public void onClick(View arg0) {
             Intent intent = new Intent();
-            intent.setClass(HomePage.this, ChatPage.class);
+            intent.setClass(HomePage.this, ChatActivity.class);
             startActivity(intent);
         }
     }
