@@ -2,7 +2,6 @@ package com.example.macbook.perkupapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,10 +22,6 @@ import ai.api.android.AIDataService;
 import ai.api.model.AIRequest;
 import ai.api.model.AIResponse;
 
-/**
- * Cited source: Copyright 2018 Abhinav Tyagi
- * https://github.com/abhi007tyagi/DialogflowChat
- */
 public class ChatActivity extends AppCompatActivity {
 
     private static final int USER = 1;
@@ -136,7 +131,6 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     public void callback(AIResponse aiResponse) {
-
         String botReply = aiResponse.getResult().getFulfillment().getSpeech();
         showTextView(botReply, BOT);
 

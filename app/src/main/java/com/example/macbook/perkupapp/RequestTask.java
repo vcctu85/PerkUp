@@ -9,10 +9,6 @@ import ai.api.android.AIDataService;
 import ai.api.model.AIRequest;
 import ai.api.model.AIResponse;
 
-/**
- * Cited source: Copyright 2018 Abhinav Tyagi
- * https://github.com/abhi007tyagi/DialogflowChat
- */
 public class RequestTask extends AsyncTask<AIRequest, Void, AIResponse> {
     Activity activity;
     private AIDataService aiDataService;
