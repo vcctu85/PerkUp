@@ -14,8 +14,6 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-import java.io.InputStream;
 import java.util.UUID;
 
 import ai.api.AIServiceContext;
@@ -31,13 +29,12 @@ import ai.api.model.AIResponse;
  */
 public class ChatActivity extends AppCompatActivity {
 
-    private static final String TAG = ChatActivity.class.getSimpleName();
-    private static final int USER = 10001;
-    private static final int BOT = 10002;
+    private static final int USER = 1;
+    private static final int BOT = 2;
 
     private String uuid = UUID.randomUUID().toString();
     private LinearLayout chatLayout;
-    private EditText queryEditText;
+    private EditText inputMessage;
 
     private AIRequest aiRequest;
     private AIDataService aiDataService;
@@ -67,8 +64,8 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
 
-        queryEditText = findViewById(R.id.queryEditText);
-        queryEditText.setOnKeyListener(new View.OnKeyListener() {
+        inputMessage = findViewById(R.id.queryEditText);
+        inputMessage.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int keyCode, KeyEvent event) {
                 if (event.getAction() == KeyEvent.ACTION_DOWN) {
@@ -89,46 +86,7 @@ public class ChatActivity extends AppCompatActivity {
 
 
     }
-
-    private void initChatbot() {
-        final AIConfiguration config = new AIConfiguration("5d24aba8559f41bfa4b976c9a27a9e93",
-                AIConfiguration.SupportedLanguages.English,
-                AIConfiguration.RecognitionEngine.System);
-        aiDataService = new AIDataService(this, config);
-        customAIServiceContext = AIServiceContextBuilder.buildFromSessionId(uuid);// helps to create new session whenever app restarts
-        aiRequest = new AIRequest();
-    }
-
-
-
-    private void sendMessage(View view) {
-        String msg = queryEditText.getText().toString();
-        if (msg.trim().isEmpty()) {
-            Toast.makeText(ChatActivity.this, "Please enter your query!", Toast.LENGTH_LONG).show();
-        } else {
-            showTextView(msg, USER);
-            queryEditText.setText("");
-            aiRequest.setQuery(msg);
-            RequestTask requestTask = new RequestTask(ChatActivity.this, aiDataService, customAIServiceContext);
-            requestTask.execute(aiRequest);
-
-        }
-    }
-
-    public void callback(AIResponse aiResponse) {
-        if (aiResponse != null) {
-            String botReply = aiResponse.getResult().getFulfillment().getSpeech();
-            Log.d(TAG, "Bot Reply: " + botReply);
-            showTextView(botReply, BOT);
-        } else {
-            Log.d(TAG, "Bot Reply: Null");
-            showTextView("There was some communication issue. Please Try again!", BOT);
-        }
-    }
-
-
-
-    private void showTextView(String message, int type) {
+    private void showTextView(String msg, int type) {
         FrameLayout layout;
         switch (type) {
             case USER:
@@ -143,11 +101,49 @@ public class ChatActivity extends AppCompatActivity {
         }
         layout.setFocusableInTouchMode(true);
         chatLayout.addView(layout);
-        TextView tv = layout.findViewById(R.id.chatMsg);
-        tv.setText(message);
+        TextView textView = layout.findViewById(R.id.chatMsg);
+        textView.setText(msg);
+
         layout.requestFocus();
-        queryEditText.requestFocus();
+        inputMessage.requestFocus();
     }
+
+
+    private void initChatbot() {
+        final AIConfiguration config = new AIConfiguration("5d24aba8559f41bfa4b976c9a27a9e93",
+                AIConfiguration.SupportedLanguages.English,
+                AIConfiguration.RecognitionEngine.System);
+        aiDataService = new AIDataService(this, config);
+        customAIServiceContext = AIServiceContextBuilder.buildFromSessionId(uuid);
+        aiRequest = new AIRequest();
+    }
+
+
+
+    private void sendMessage(View view) {
+        String msg = inputMessage.getText().toString();
+        if (!msg.trim().isEmpty()) {
+            showTextView(msg, USER);
+            inputMessage.setText("");
+            aiRequest.setQuery(msg);
+            RequestTask requestTask = new RequestTask(ChatActivity.this, aiDataService, customAIServiceContext);
+            requestTask.execute(aiRequest);
+
+        } else {
+
+            Toast.makeText(ChatActivity.this, "Enter a message.", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void callback(AIResponse aiResponse) {
+
+        String botReply = aiResponse.getResult().getFulfillment().getSpeech();
+        showTextView(botReply, BOT);
+
+    }
+
+
+
 
     FrameLayout getUserLayout() {
         LayoutInflater inflater = LayoutInflater.from(ChatActivity.this);
