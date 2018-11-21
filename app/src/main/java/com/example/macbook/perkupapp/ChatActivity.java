@@ -25,6 +25,10 @@ import ai.api.android.AIDataService;
 import ai.api.model.AIRequest;
 import ai.api.model.AIResponse;
 
+/**
+ * Cited source: Copyright 2018 Abhinav Tyagi
+ * https://github.com/abhi007tyagi/DialogflowChat
+ */
 public class ChatActivity extends AppCompatActivity {
 
     private static final String TAG = ChatActivity.class.getSimpleName();
@@ -35,12 +39,9 @@ public class ChatActivity extends AppCompatActivity {
     private LinearLayout chatLayout;
     private EditText queryEditText;
 
-    // Android client
     private AIRequest aiRequest;
     private AIDataService aiDataService;
     private AIServiceContext customAIServiceContext;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +60,6 @@ public class ChatActivity extends AppCompatActivity {
         chatLayout = findViewById(R.id.chatLayout);
 
         final ImageView sendBtn = findViewById(R.id.sendBtn);
-//        sendBtn.setOnClickListener(this::sendMessage);
         sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -108,7 +108,6 @@ public class ChatActivity extends AppCompatActivity {
         } else {
             showTextView(msg, USER);
             queryEditText.setText("");
-            // Android client
             aiRequest.setQuery(msg);
             RequestTask requestTask = new RequestTask(ChatActivity.this, aiDataService, customAIServiceContext);
             requestTask.execute(aiRequest);
@@ -118,7 +117,6 @@ public class ChatActivity extends AppCompatActivity {
 
     public void callback(AIResponse aiResponse) {
         if (aiResponse != null) {
-            // process aiResponse here
             String botReply = aiResponse.getResult().getFulfillment().getSpeech();
             Log.d(TAG, "Bot Reply: " + botReply);
             showTextView(botReply, BOT);
@@ -144,11 +142,11 @@ public class ChatActivity extends AppCompatActivity {
                 break;
         }
         layout.setFocusableInTouchMode(true);
-        chatLayout.addView(layout); // move focus to text view to automatically make it scroll up if softfocus
+        chatLayout.addView(layout);
         TextView tv = layout.findViewById(R.id.chatMsg);
         tv.setText(message);
         layout.requestFocus();
-        queryEditText.requestFocus(); // change focus back to edit text to continue typing
+        queryEditText.requestFocus();
     }
 
     FrameLayout getUserLayout() {
