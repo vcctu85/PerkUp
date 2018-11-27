@@ -18,9 +18,9 @@ import com.google.ar.core.exceptions.UnavailableSdkTooOldException;
 import com.google.ar.core.exceptions.UnavailableUserDeclinedInstallationException;
 
 public class HomePage extends AppCompatActivity {
-    Button enterAR;
-    Button chatWithPenny;
-    Button viewProgress;
+    Button chat;
+    Button giftShelf;
+    Button adventureLog;
     private boolean mUserRequestedInstall = true;
     public Session mSession = null;
 
@@ -92,13 +92,13 @@ public class HomePage extends AppCompatActivity {
         textview.setTypeface(typeface);
 
         //find three main buttons on home page.
-        enterAR = findViewById(R.id.enterAR);
-        chatWithPenny = findViewById(R.id.chatWithPenny);
-        viewProgress = findViewById(R.id.viewProgress);
+        chat = findViewById(R.id.chat);
+        giftShelf = findViewById(R.id.giftShelf);
+        adventureLog = findViewById(R.id.adventureLog);
 
-        chatWithPenny.setOnClickListener(new chatButton());
-        enterAR.setOnClickListener(new ARbutton());
-        viewProgress.setOnClickListener(new ProgressButton());
+        chat.setOnClickListener(new chatButton());
+        giftShelf.setOnClickListener(new giftButton());
+        adventureLog.setOnClickListener(new AdventureButton());
     }
 
     private class chatButton implements View.OnClickListener {
@@ -109,7 +109,7 @@ public class HomePage extends AppCompatActivity {
             startActivity(intent);
         }
     }
-    private class ARbutton implements View.OnClickListener {
+    private class giftButton implements View.OnClickListener {
         @Override
         public void onClick(View arg0) {
             Intent intent = new Intent();
@@ -118,7 +118,7 @@ public class HomePage extends AppCompatActivity {
         }
     }
 
-    private class ProgressButton implements View.OnClickListener {
+    private class AdventureButton implements View.OnClickListener {
         @Override
         public void onClick(View arg0) {
             Intent intent = new Intent();
