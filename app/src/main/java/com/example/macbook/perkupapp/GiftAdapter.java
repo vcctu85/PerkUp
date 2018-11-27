@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -27,20 +28,19 @@ public class GiftAdapter extends ArrayAdapter<Gift> {
                     R.layout.list_item, parent, false);
         }
 
-        Gift currentGift = getItem(position);
-        TextView points = listItemView.findViewById(R.id.points);
-        TextView location = listItemView.findViewById(R.id.location);
 
+//        ImageView gift = listItemView.findViewById(R.id.gift);
+//        gift.setImageResource(R.drawable.red_gift);
         Button button = listItemView.findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //here is where we launch Vuforia
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 mContext.startActivity(intent);
             }
         });
-        points.setText("Earn " + Integer.toString(currentGift.getNumPoints()) + " points at");
-        location.setText(currentGift.getLocation());
+
 
         return listItemView;
     }
