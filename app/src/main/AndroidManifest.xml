@@ -22,7 +22,7 @@
         </activity>
         <activity android:name=".ChatActivity"/>
         <activity android:name=".EnvironmentChoose"/>
-        <activity android:name=".GamePage"/>
+        <activity android:name=".GiftActivity"/>
 
         <meta-data android:name="com.google.ar.core" android:value="required" />
     </application>

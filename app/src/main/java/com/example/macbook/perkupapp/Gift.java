@@ -1,10 +1,10 @@
 package com.example.macbook.perkupapp;
 
-public class Game {
+public class Gift {
     private int numPoints;
     private String location;
 
-    public Game(int numPoints, String location) {
+    public Gift(int numPoints, String location) {
         this.numPoints = numPoints;
         this.location = location;
 

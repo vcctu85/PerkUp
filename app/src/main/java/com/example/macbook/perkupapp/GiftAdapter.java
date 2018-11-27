@@ -12,10 +12,10 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class GameAdapter extends ArrayAdapter<Game> {
+public class GiftAdapter extends ArrayAdapter<Gift> {
     private Context mContext;
-    public GameAdapter(Context context, List<Game> games) {
-        super(context, 0, games);
+    public GiftAdapter(Context context, List<Gift> gifts) {
+        super(context, 0, gifts);
         this.mContext = context;
     }
 
@@ -27,7 +27,7 @@ public class GameAdapter extends ArrayAdapter<Game> {
                     R.layout.list_item, parent, false);
         }
 
-        Game currentGame = getItem(position);
+        Gift currentGift = getItem(position);
         TextView points = listItemView.findViewById(R.id.points);
         TextView location = listItemView.findViewById(R.id.location);
 
@@ -39,8 +39,8 @@ public class GameAdapter extends ArrayAdapter<Game> {
                 mContext.startActivity(intent);
             }
         });
-        points.setText("Earn " + Integer.toString(currentGame.getNumPoints()) + " points at");
-        location.setText(currentGame.getLocation());
+        points.setText("Earn " + Integer.toString(currentGift.getNumPoints()) + " points at");
+        location.setText(currentGift.getLocation());
 
         return listItemView;
     }

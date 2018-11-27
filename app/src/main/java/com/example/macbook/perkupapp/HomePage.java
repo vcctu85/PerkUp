@@ -113,7 +113,7 @@ public class HomePage extends AppCompatActivity {
         @Override
         public void onClick(View arg0) {
             Intent intent = new Intent();
-            intent.setClass(HomePage.this, GamePage.class);
+            intent.setClass(HomePage.this, GiftActivity.class);
             startActivity(intent);
         }
     }
