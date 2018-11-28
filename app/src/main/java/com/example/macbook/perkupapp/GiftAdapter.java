@@ -28,15 +28,13 @@ public class GiftAdapter extends ArrayAdapter<Gift> {
                     R.layout.list_item, parent, false);
         }
 
-
-//        ImageView gift = listItemView.findViewById(R.id.gift);
-//        gift.setImageResource(R.drawable.red_gift);
         Button button = listItemView.findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //here is where we launch Vuforia
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                //Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                Intent intent = new Intent(view.getContext(), com.example.macbook.perkupapp.UnityPlayerActivity.class);
                 mContext.startActivity(intent);
             }
         });

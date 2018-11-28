@@ -31,8 +31,8 @@ public class GiftActivity extends Activity {
 //            @Override
 //            public void onClick(View view) {
 //
-//                //Intent myIntent = new Intent(view.getContext(), com.example.macbook.perkupapp.UnityPlayerActivity.class);
-//                //startActivity(myIntent);
+//                Intent myIntent = new Intent(view.getContext(), com.example.macbook.perkupapp.UnityPlayerActivity.class);
+//                startActivity(myIntent);
 //            }
 //        });
         newsListView.setAdapter(giftAdapter);

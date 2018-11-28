@@ -24,7 +24,8 @@
         <activity android:name=".EnvironmentChoose"/>
         <activity android:name=".GiftActivity"/>
 
-        <meta-data android:name="com.google.ar.core" android:value="required" />
+        <meta-data android:name="com.google.ar.core" android:value="required"
+            tools:replace="android:value"/>
     </application>
 
 </manifest>
