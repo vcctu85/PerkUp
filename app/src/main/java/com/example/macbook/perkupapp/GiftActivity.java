@@ -4,19 +4,24 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 //import com.example.macbook.perkupapp.UnityPlayerActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -39,16 +44,27 @@ public class GiftActivity extends Activity {
         setContentView(R.layout.list_gifts);
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
-        ListView newsListView = findViewById(R.id.list_view);
+    }
+    private boolean checkLocation(Gift g) {
+        Geocoder geocoder;
+        List<Address> addresses = null;
+        geocoder = new Geocoder(this, Locale.getDefault());
+        try {
+            addresses = geocoder.getFromLocation(mLocation.getLatitude(), mLocation.getLongitude(), 1);
+        } catch (IOException io) {
 
-        Gift one = new Gift(100, "Cafe Strada");
+        }
 
-        List<Gift> gifts = new ArrayList<>();
-        gifts.add(one);
-
-        giftAdapter = new GiftAdapter(this, gifts);
-
-        newsListView.setAdapter(giftAdapter);
+        String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+        String city = addresses.get(0).getLocality();
+        String state = addresses.get(0).getAdminArea();
+        String postalCode = addresses.get(0).getPostalCode();
+        String knownName = addresses.get(0).getFeatureName();
+        if (knownName == g.getLocation()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -73,19 +89,28 @@ public class GiftActivity extends Activity {
         }
 
     }
-
-
-
     @Override
     public void onStart() {
         super.onStart();
+        //check if we have permission to the user's location
         int p = ActivityCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION);
         if (p == PackageManager.PERMISSION_GRANTED) {
+            //if not, request
             requestPermissions();
         } else {
+            //if so, just get the location
             getLocation();
         }
+        ListView newsListView = findViewById(R.id.list_view);
+        Gift one = new Gift("Caffe Strada", "2300 College Ave, Berkeley, CA 94704", false);
+        Gift two = new Gift("Jacobs Hall", "", true);
+        List<Gift> gifts = new ArrayList<>();
+        gifts.add(one);
+        gifts.add(two);
+        //checkLocation(one);
+        giftAdapter = new GiftAdapter(this, gifts);
+        newsListView.setAdapter(giftAdapter);
     }
 
     /**
@@ -99,9 +124,11 @@ public class GiftActivity extends Activity {
                                            @NonNull int[] results) {
         if (code == REQUEST_CODE) {
             if (results[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission granted.
                 getLocation();
             } else {
-                startToast(R.string.warning, R.string.settings, new View.OnClickListener() {
+                // Permission denied.
+                startSnackbar(R.string.warning, R.string.settings, new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent();
@@ -116,9 +143,12 @@ public class GiftActivity extends Activity {
         }
     }
 
-    private void startToast(final int firstid, final int secondid,
+    private void startSnackbar(final int firstid, final int secondid,
                                View.OnClickListener listener) {
-        Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+        Snackbar.make(findViewById(android.R.id.content),
+                getString(firstid),
+                Snackbar.LENGTH_INDEFINITE)
+                .setAction(getString(secondid), listener).show();
     }
 
 
@@ -130,8 +160,12 @@ public class GiftActivity extends Activity {
         if (!ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
             requestLocPermissions();
         } else {
-
-            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+            startSnackbar(R.string.warning, android.R.string.ok, new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    requestLocPermissions();
+                }
+            });
 
         }
     }
