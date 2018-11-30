@@ -11,9 +11,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
 import java.util.List;
 
 public class GiftAdapter extends ArrayAdapter<Gift> {
+
     private Context mContext;
     public GiftAdapter(Context context, List<Gift> gifts) {
         super(context, 0, gifts);
@@ -32,8 +34,7 @@ public class GiftAdapter extends ArrayAdapter<Gift> {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //here is where we launch Vuforia
-                //Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
                 Intent intent = new Intent(view.getContext(), com.example.macbook.perkupapp.UnityPlayerActivity.class);
                 mContext.startActivity(intent);
             }
