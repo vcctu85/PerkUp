@@ -1,1 +1,1 @@
-include ':app', ':Help-debug', ':Dude', ':VuforiaWrapper'
+include ':app', ':Dude', ':VuforiaWrapper', ':Help-debug'

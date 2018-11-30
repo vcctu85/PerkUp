@@ -26,15 +26,7 @@ public class GiftActivity extends Activity {
         gifts.add(one);
 
         giftAdapter = new GiftAdapter(this, gifts);
-//        Button button = findViewById(R.id.button);
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                Intent myIntent = new Intent(view.getContext(), com.example.macbook.perkupapp.UnityPlayerActivity.class);
-//                startActivity(myIntent);
-//            }
-//        });
+
         newsListView.setAdapter(giftAdapter);
     }
 }

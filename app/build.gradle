@@ -35,7 +35,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation project(":Help-debug")
+    implementation project(':Help-debug')
     implementation(name: "VuforiaWrapper", ext:'aar')
     // Dialogflow SDK dependencies
     implementation 'ai.api:sdk:2.0.7@aar'
