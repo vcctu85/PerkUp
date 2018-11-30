@@ -79,14 +79,11 @@ public class GiftActivity extends Activity {
     @Override
     public void onStart() {
         super.onStart();
-        //check if we have permission to the user's location
         int p = ActivityCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION);
         if (p == PackageManager.PERMISSION_GRANTED) {
-            //if not, request
             requestPermissions();
         } else {
-            //if so, just get the location
             getLocation();
         }
     }
@@ -102,10 +99,8 @@ public class GiftActivity extends Activity {
                                            @NonNull int[] results) {
         if (code == REQUEST_CODE) {
             if (results[0] == PackageManager.PERMISSION_GRANTED) {
-                // Permission granted.
                 getLocation();
             } else {
-                // Permission denied.
                 startToast(R.string.warning, R.string.settings, new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
