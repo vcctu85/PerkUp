@@ -45,6 +45,8 @@ public class HomePage extends AppCompatActivity {
         chat.setOnClickListener(new chatButton());
         giftShelf.setOnClickListener(new giftButton());
         adventureLog.setOnClickListener(new AdventureButton());
+
+        getSupportActionBar().hide();
     }
 
     private class chatButton implements View.OnClickListener {

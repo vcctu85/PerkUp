@@ -76,7 +76,7 @@ public class CustomListAdapter extends BaseAdapter {
         title.setText(m.getTitle());
 
         // location
-        location.setText("Location: " + String.valueOf(m.getLocation()));
+        location.setText(String.valueOf(m.getLocation()));
 
         // date
         date.setText(m.getDate());

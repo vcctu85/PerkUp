@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdventureLog" >
+    android:background="@drawable/games_page"
+    tools:context=".AdventureLog"
+     >
 
     <ListView
         android:id="@+id/list"
@@ -11,6 +13,7 @@
         android:layout_height="wrap_content"
         android:divider="@color/colorPrimaryDark"
         android:dividerHeight="1dp"
+        android:layout_marginTop="8dp"
         android:listSelector="@drawable/list_row_selector" />
 
 </RelativeLayout>

@@ -22,6 +22,9 @@ public class AdventureLog extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.adventure_log);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Adventures");
+
         listView = (ListView) findViewById(R.id.list);
         adapter = new CustomListAdapter(this, logList, this);
         listView.setAdapter(adapter);
@@ -38,5 +41,11 @@ public class AdventureLog extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
+//        return super.onSupportNavigateUp();
+    }
 
 }

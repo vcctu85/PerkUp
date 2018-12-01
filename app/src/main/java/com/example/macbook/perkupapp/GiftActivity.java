@@ -13,6 +13,7 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -33,7 +34,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.example.macbook.perkupapp.StartLoc;
 
-public class GiftActivity extends Activity {
+public class GiftActivity extends AppCompatActivity {
     private GiftAdapter giftAdapter;
 
     private FusedLocationProviderClient mFusedLocationClient;
@@ -51,6 +52,8 @@ public class GiftActivity extends Activity {
         this.startLoc = new StartLoc(this);
         requestPermissionIfNotGranted();
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Gifts");
     }
 
 
@@ -113,6 +116,13 @@ public class GiftActivity extends Activity {
         } else {
             return false;
         }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
+//        return super.onSupportNavigateUp();
     }
 
 }

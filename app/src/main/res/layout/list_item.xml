@@ -9,43 +9,64 @@
 <android.support.constraint.ConstraintLayout
 
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="wrap_content"
     android:layout_margin="8dp"
     android:elevation="4dp"
     android:background="@drawable/card_shape" >
+
+    <ImageView
+        android:id="@+id/gift"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="left"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:adjustViewBounds="true"
+        android:cropToPadding="false"
+        android:src="@drawable/red_gift"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/gift"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:src="@drawable/blue_gift"
-            android:id="@+id/gift"/>
         <!--<TextView-->
-            <!--android:id="@+id/points"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:gravity="left"-->
-            <!--android:text="Earn 100 points at"-->
-            <!--android:textColor="#F67C02"-->
-            <!--android:textSize="14dp" />-->
+        <!--android:id="@+id/location"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:text="Location" />-->
 
-        <!--<TextView-->
-            <!--android:id="@+id/location"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Caffe Strada"-->
-            <!--android:textColor="#22736A"-->
-            <!--android:textSize="18dp" />-->
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Caffe Strada"
+            android:fontFamily="sans-serif-light"
+            android:textColor="#22736A"
+            android:textSize="20dp" />
+        <TextView
+            android:id="@+id/points"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="New Gift"
+            android:textColor="?android:attr/textColorSecondary"
+            android:textSize="12dp" />
     </LinearLayout>
 
     <Button
@@ -55,26 +76,12 @@
         android:layout_centerHorizontal="true"
         android:layout_marginEnd="16dp"
         android:background="@drawable/environment_button_shape"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
         android:text="UNWRAP"
         android:textColor="#F67C02"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Location"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button"
-        app:layout_constraintStart_toEndOf="@+id/linearLayout"
         app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
 </LinearLayout>
