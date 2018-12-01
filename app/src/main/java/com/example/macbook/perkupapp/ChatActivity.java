@@ -105,7 +105,7 @@ public class ChatActivity extends AppCompatActivity {
 
 
     private void initChatbot() {
-        final AIConfiguration config = new AIConfiguration("5d24aba8559f41bfa4b976c9a27a9e93",
+        final AIConfiguration config = new AIConfiguration("4de51810554c4fe8a7ed32c5ee12ddf4",
                 AIConfiguration.SupportedLanguages.English,
                 AIConfiguration.RecognitionEngine.System);
         aiDataService = new AIDataService(this, config);
