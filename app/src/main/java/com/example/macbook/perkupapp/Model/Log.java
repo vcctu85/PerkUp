@@ -3,17 +3,18 @@ package com.example.macbook.perkupapp.Model;
 import java.util.ArrayList;
 
 public class Log {
-    private String title, location, date;
+    private String title, location, date, personalLabel;
     private Integer image;
     public Log() {
     }
 
     public Log(String name, Integer image, String location,
-                 String date) {
+                 String date, String personalLabel) {
         this.title = name;
         this.image = image;
         this.location = location;
         this.date = date;
+        this.personalLabel = personalLabel;
 
     }
 
@@ -37,7 +38,7 @@ public class Log {
         return location;
     }
 
-    public void setRating(String location) {
+    public void setLocation(String location) {
         this.location = location;
     }
 
@@ -49,4 +50,11 @@ public class Log {
         this.date = date;
     }
 
+    public String getPersonalLabel() {
+        return personalLabel;
+    }
+
+    public void setPersonalLabel(String personalLabel) {
+        this.personalLabel = personalLabel;
+    }
 }
