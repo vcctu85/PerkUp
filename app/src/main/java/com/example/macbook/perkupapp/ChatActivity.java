@@ -131,7 +131,6 @@ public class ChatActivity extends AppCompatActivity {
             requestTask.execute(aiRequest);
 
         } else {
-
             Toast.makeText(ChatActivity.this, "Enter a message.", Toast.LENGTH_LONG).show();
         }
     }

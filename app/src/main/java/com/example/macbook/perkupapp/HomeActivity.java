@@ -7,17 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.ar.core.ArCoreApk;
-import com.google.ar.core.Session;
-import com.google.ar.core.exceptions.UnavailableApkTooOldException;
-import com.google.ar.core.exceptions.UnavailableArcoreNotInstalledException;
-import com.google.ar.core.exceptions.UnavailableDeviceNotCompatibleException;
-import com.google.ar.core.exceptions.UnavailableSdkTooOldException;
-import com.google.ar.core.exceptions.UnavailableUserDeclinedInstallationException;
-
-public class HomePage extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
     Button chat;
     Button giftShelf;
     Button adventureLog;
@@ -53,7 +44,7 @@ public class HomePage extends AppCompatActivity {
         @Override
         public void onClick(View arg0) {
             Intent intent = new Intent();
-            intent.setClass(HomePage.this, ChatActivity.class);
+            intent.setClass(HomeActivity.this, ChatActivity.class);
             startActivity(intent);
         }
     }
@@ -61,7 +52,7 @@ public class HomePage extends AppCompatActivity {
         @Override
         public void onClick(View arg0) {
             Intent intent = new Intent();
-            intent.setClass(HomePage.this, GiftActivity.class);
+            intent.setClass(HomeActivity.this, GiftActivity.class);
             startActivity(intent);
         }
     }
@@ -70,7 +61,7 @@ public class HomePage extends AppCompatActivity {
         @Override
         public void onClick(View arg0) {
             Intent intent = new Intent();
-            intent.setClass(HomePage.this, AdventureLog.class);
+            intent.setClass(HomeActivity.this, AdventureLog.class);
             startActivity(intent);
         }
     }

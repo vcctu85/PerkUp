@@ -1,4 +1,4 @@
-package com.example.macbook.perkupapp;
+package com.example.macbook.perkupapp.Model;
 
 public class Gift {
     private String location;

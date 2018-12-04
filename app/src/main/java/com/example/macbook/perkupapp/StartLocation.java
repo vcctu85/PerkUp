@@ -12,13 +12,13 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 
-public class StartLoc {
+public class StartLocation {
     private FusedLocationProviderClient mFusedLocationClient;
     private Location currentLoc;
     private double mLatitudeLabel;
     private double mLongitudeLabel;
     GiftActivity ga;
-    public StartLoc(GiftActivity ga) {
+    public StartLocation(GiftActivity ga) {
         this.ga = ga;
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(ga);
     }

@@ -1,4 +1,4 @@
-package com.example.macbook.perkupapp;
+package com.example.macbook.perkupapp.Adapter;
 
 import com.example.macbook.perkupapp.R;
 import com.example.macbook.perkupapp.Model.Log;
@@ -18,7 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class CustomListAdapter extends BaseAdapter {
+public class LogAdapter extends BaseAdapter {
 
     private Activity activity;
     private LayoutInflater inflater;
@@ -28,7 +28,7 @@ public class CustomListAdapter extends BaseAdapter {
     private SharedPreferences pref;
 
 
-    public CustomListAdapter(Activity activity, List<Log> movieItems, Context context) {
+    public LogAdapter(Activity activity, List<Log> movieItems, Context context) {
         this.activity = activity;
         this.movieItems = movieItems;
         this.context = context;
