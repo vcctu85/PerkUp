@@ -85,36 +85,24 @@ public class GiftActivity extends AppCompatActivity {
         System.out.println(String.valueOf(latitude) + String.valueOf(longitude));
 
         ListView newsListView = findViewById(R.id.list_view);
-        Gift one = new Gift("Caffe Strada", "2300 College Ave, Berkeley, CA 94704", false);
-        Gift two = new Gift("Jacobs Hall", "", true);
+        Gift one = new Gift("Caffe Strada", 37.86902282581928, -122.25483097834514);
+        Gift two = new Gift("V & A Cafe", 37.87600673539823, -122.25882757455113, true);
         List<Gift> gifts = new ArrayList<>();
         gifts.add(one);
         gifts.add(two);
-        checkLocation(one);
+        for (Gift g: gifts) {
+            checkLocation(g);
+        }
         giftAdapter = new GiftAdapter(this, gifts);
         newsListView.setAdapter(giftAdapter);
     }
 
 
-    private boolean checkLocation(Gift g) {
-        Geocoder geocoder;
-        List<Address> addresses = null;
-        geocoder = new Geocoder(this, Locale.getDefault());
-        try {
-//            addresses = geocoder.getFromLocation(mLocation.getLatitude(), mLocation.getLongitude(), 1);
-            addresses = geocoder.getFromLocation(latitude, longitude, 1);
-        } catch (IOException io) {
-
-        }
-        String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
-        String city = addresses.get(0).getLocality();
-        String state = addresses.get(0).getAdminArea();
-        String postalCode = addresses.get(0).getPostalCode();
-        String knownName = addresses.get(0).getFeatureName();
-        if (knownName == g.getLocation()) {
-            return true;
+    private void checkLocation(Gift g) {
+        if (g.isAtLocation() || (g.getLatitude() == latitude && g.getLongitude() == longitude)) {
+            g.atLocation = true;
         } else {
-            return false;
+            g.atLocation = false;
         }
     }
 
