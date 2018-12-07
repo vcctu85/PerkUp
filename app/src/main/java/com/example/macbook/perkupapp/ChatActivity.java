@@ -57,8 +57,8 @@ public class ChatActivity extends AppCompatActivity {
 
         chatLayout = findViewById(R.id.chatLayout);
 
-        final ImageView sendBtn = findViewById(R.id.sendBtn);
-        sendBtn.setOnClickListener(new View.OnClickListener() {
+        final ImageView sendButton = findViewById(R.id.sendBtn);
+        sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 sendMessage(view);
@@ -73,7 +73,7 @@ public class ChatActivity extends AppCompatActivity {
                     switch (keyCode) {
                         case KeyEvent.KEYCODE_DPAD_CENTER:
                         case KeyEvent.KEYCODE_ENTER:
-                            sendMessage(sendBtn);
+                            sendMessage(sendButton);
                             return true;
                         default:
                             break;
@@ -111,6 +111,7 @@ public class ChatActivity extends AppCompatActivity {
 
 
     private void initChatbot() {
+        //here is where we call the Dialogflow
         final AIConfiguration config = new AIConfiguration("4de51810554c4fe8a7ed32c5ee12ddf4",
                 AIConfiguration.SupportedLanguages.English,
                 AIConfiguration.RecognitionEngine.System);
@@ -119,6 +120,15 @@ public class ChatActivity extends AppCompatActivity {
         aiRequest = new AIRequest();
     }
 
+    FrameLayout getUserLayout() {
+        LayoutInflater inflater = LayoutInflater.from(ChatActivity.this);
+        return (FrameLayout) inflater.inflate(R.layout.my_msg, null);
+    }
+
+    FrameLayout getBotLayout() {
+        LayoutInflater inflater = LayoutInflater.from(ChatActivity.this);
+        return (FrameLayout) inflater.inflate(R.layout.bot_msg, null);
+    }
 
 
     private void sendMessage(View view) {
@@ -127,7 +137,7 @@ public class ChatActivity extends AppCompatActivity {
             showTextView(msg, USER);
             inputMessage.setText("");
             aiRequest.setQuery(msg);
-            RequestTask requestTask = new RequestTask(ChatActivity.this, aiDataService, customAIServiceContext);
+            RequestTask requestTask = new RequestTask(customAIServiceContext, ChatActivity.this, aiDataService);
             requestTask.execute(aiRequest);
 
         } else {
@@ -146,17 +156,5 @@ public class ChatActivity extends AppCompatActivity {
         finish();
         return true;
 //        return super.onSupportNavigateUp();
-    }
-
-
-
-    FrameLayout getUserLayout() {
-        LayoutInflater inflater = LayoutInflater.from(ChatActivity.this);
-        return (FrameLayout) inflater.inflate(R.layout.my_msg, null);
-    }
-
-    FrameLayout getBotLayout() {
-        LayoutInflater inflater = LayoutInflater.from(ChatActivity.this);
-        return (FrameLayout) inflater.inflate(R.layout.bot_msg, null);
     }
 }

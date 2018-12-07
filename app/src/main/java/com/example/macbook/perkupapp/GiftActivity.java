@@ -63,7 +63,8 @@ public class GiftActivity extends AppCompatActivity {
         this.latitude = latitude;
 
         ListView newsListView = findViewById(R.id.list_view);
-        Gift one = new Gift("Caffe Strada", 37.86902282581928, -122.25483097834514);
+        //hardcoded gifts with their latitudes and longitudes
+        Gift one = new Gift("Caffe Strada", 37.86902282581928, -122.25483097834514, false);
         Gift two = new Gift("V & A Cafe", 37.87600673539823, -122.25882757455113, true);
         List<Gift> gifts = new ArrayList<>();
         gifts.add(one);
