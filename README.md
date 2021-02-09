@@ -6,4 +6,3 @@ that would prompt social interactions, motivating them to go out and socialize w
 AR, FusedLocationProvider to attain the user’s location, as well as Google’s Dialogflow to implement a chatbot that the user
 could talk to about their feelings.
 
-This was a team project made for UC Berkeley's CS160 class final project with the theme of accessibility.
